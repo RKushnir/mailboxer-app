@@ -1,0 +1,1 @@
+This is a simple Rails 3.2 application to try a `mailboxer` gem.

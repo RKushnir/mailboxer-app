@@ -1,0 +1,9 @@
+%h1 Conversations
+%ul
+  = content_tag_for(:li, conversations) do |conversation|
+    %p
+      = link_to conversation.subject, conversation
+      |
+      = link_to 'Trash', conversation, method: :delete
+
+= link_to 'Start Conversation', :new_conversation

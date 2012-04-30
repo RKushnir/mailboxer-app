@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Messaging</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% if notice %>
+    <p class="notice"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert"><%= alert %></p>
+  <% end %>
+  <% if signed_in? %>
+    <p>Signed in as <%= current_user.email %> (<%= link_to 'sign out', :destroy_user_session, method: :delete %>)</p>
+    <p><%= link_to 'My Conversations', :conversations %></p>
+  <% else %>
+    <p>Please, <%= link_to 'sign in', :new_user_session %></p>
+  <% end %>
+  <%= yield %>
+</body>
+</html>
