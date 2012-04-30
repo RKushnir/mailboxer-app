@@ -1,0 +1,8 @@
+= content_tag_for(:li, conversation) do |conversation|
+  %p
+    = link_to conversation.subject, conversation
+    |
+    - if conversation.is_trashed?(current_user)
+      = link_to 'Move to trash', [:trash, conversation], method: :post
+    - else
+      = link_to 'Untrash', [:untrash, conversation], method: :post

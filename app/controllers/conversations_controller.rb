@@ -1,6 +1,6 @@
 class ConversationsController < ApplicationController
   before_filter :authenticate_user!
-  helper_method :conversations, :conversation
+  helper_method :mailbox, :conversation
 
   def create
     recipient_emails = conversation_params(:recipients).split(',')
@@ -17,19 +17,24 @@ class ConversationsController < ApplicationController
     redirect_to conversation
   end
 
-  def destroy
+  def trash
     conversation.move_to_trash(current_user)
+    redirect_to :conversations
+  end
+
+  def untrash
+    conversation.untrash(current_user)
     redirect_to :conversations
   end
 
   private
 
-  def conversations
-    @conversations ||= current_user.mailbox.conversations
+  def mailbox
+    @mailbox ||= current_user.mailbox
   end
 
   def conversation
-    @conversation ||= params[:id] ? conversations.find(params[:id]) : conversations.new
+    @conversation ||= mailbox.conversations.find(params[:id])
   end
 
   def conversation_params(*keys)
