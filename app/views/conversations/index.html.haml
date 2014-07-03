@@ -1,9 +1,9 @@
 %h1 Conversations
 %h2 Inbox
-%ul= render mailbox.inbox
+%ul= render collection: mailbox.inbox, partial: 'conversation'
 %h2 Sentbox
-%ul= render mailbox.sentbox
+%ul= render collection: mailbox.sentbox, partial: 'conversation'
 %h2 Trash
-%ul= render mailbox.trash
+%ul= render collection: mailbox.trash, partial: 'conversation'
 
 = link_to 'Start Conversation', :new_conversation
