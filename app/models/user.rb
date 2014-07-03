@@ -1,12 +1,14 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
   acts_as_messageable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-
+  # You'd, probably, want to have a separate name column instead
   def name
+    email
+  end
+
+  def mailboxer_email(object)
     email
   end
 end
