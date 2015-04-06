@@ -1,2 +1,14 @@
-This is a simple Rails 4.1 application to try a `mailboxer` gem.
+This is a simple Rails 4.2.1 application to try a `mailboxer` gem.
 If you're still using Rails 3.2, see the `rails-3-2` branch.
+
+=== Using
+
+    git clone https://github.com/RKushnir/mailboxer-app
+    cd mailboxer-app
+    rake db:migrate
+
+You can also fill database with users
+
+    MAILBOXER_APP_PASSWORD=secret rake db:seed
+
+This will create 10 users with password <tt>secret</tt> and emails <tt>user0@example.com</tt>, <tt>user1@example.com</tt> ... <tt>user9@example.com</tt>.
